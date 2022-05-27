@@ -3,7 +3,6 @@ const { response } = require('express');
 const Usuario = require('../models/usuario');
 const { generarJWT } = require('../helpers/generar-jwt');
 const { googleVerify } = require('../helpers/google-verify');
-const { json } = require('express/lib/response');
 const { validarGoogleFlutterIdToken } = require('../helpers/google-verify_flutter');
 
 const login = async (req, res = response) => {
@@ -92,32 +91,11 @@ const googleSignIn = async (req, res = response, next) => {
   }
 };
 
-const googleSignInFlutter = async (req, res = response, next) => {
-  const token = req.body.token;
-  if (!token) {
-    return res.json({
-      ok: false,
-      msg: 'No hay token en la petición.'
-    })
-  }
 
-  const googleUser = await validarGoogleFlutterIdToken(token);
-  if (!googleUser) {
-    return res.status(400).json({
-      ok: false
-    });
-  }
-
-  res.json({
-    googleUser,
-    ok: true
-  });
-}
 
 
 module.exports = {
   login,
   googleSignIn,
-  googleSignInFlutter,
-  validarGoogleFlutterIdToken
+ 
 };
