@@ -1,7 +1,7 @@
 const { Router } = require('express');
 
 const { body } = require('express-validator');
-const { login, googleSignIn } = require('../controllers/auth');
+const { login, googleSignIn, googleSignInFlutter } = require('../controllers/auth');
 const { validarCampos } = require('../middlewares/validar-campos');
 
 const router = Router();
@@ -25,5 +25,7 @@ router.post(
   ],
   googleSignIn
 );
+
+router.post('/googleflutter',googleSignInFlutter )
 
 module.exports = router;

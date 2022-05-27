@@ -3,6 +3,7 @@ const cors = require('cors');
 const { dbConnection } = require('../database/config');
 const morgan = require('morgan');
 const fileUpload = require('express-fileupload');
+const bodyParser = require('body-parser');
 
 class Server {
   constructor() {
@@ -33,6 +34,9 @@ class Server {
   }
 
   middlewares() {
+    //BodyParser
+    this.app.use(bodyParser.urlencoded({extended: true}));
+
     //Morgan
     this.app.use(morgan('dev'));
 
