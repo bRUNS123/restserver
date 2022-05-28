@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Google Sign-in</title>
+</head>
+<body>
+
+    <h1>Google Sign-in</h1>
+    <hr>
+    
+        <div id="g_id_onload"
+            data-client_id="379849756103-rk8fp8rhf3upf3tr7e1h778jgkoa60cm.apps.googleusercontent.com"
+            data-auto_prompt="false"
+            data-callback="handleCredentialResponse">
+        </div>
+
+        <div class="g_id_signin"
+            data-type="standard"
+            data-shape="rectangular"
+            data-theme="outline"
+            data-text="continue_with"
+            data-size="medium"
+            data-logo_alignment="left">
+        </div>
+
+        <button id="google_signout">Signout</button>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+        function handleCredentialResponse(response) {
+        //Google Token : ID_TOKEN
+        // console.log('id_token', response.credential);
+        const body = {id_token: response.credential};
+        console.log(window.location.hostname.includes('localhost'))
+        var url = (window.location.hostname.includes('localhost'))
+                    ? 'http://localhost:3000/api/auth/google'
+                    : 'https://bones.webmul.com/api/auth/google'
+//Si no funciona try, catch cambiar metodo.
+        // try {
+
+            fetch(url, {
+             method: 'POST', 
+             headers:{'Content-Type':'application/json'},
+             body: JSON.stringify(body)
+            })
+            .then(resp => resp.json())
+            .then(resp => {
+                console.log(resp)
+                localStorage.setItem('email', resp.usuario.correo);
+            })
+            .catch(console.warn);
+        // }catch {
+        //     fetch('https://bones.webmul.com/api/auth/google', {
+        //      method: 'POST', 
+        //      headers:{'Content-Type':'application/json'},
+        //      body: JSON.stringify(body)
+        //     })
+        //     .then(resp => resp.json())
+        //     .then(resp => {console.log(resp)})
+        //     .catch(console.warn);
+        // }
+    }
+        const button = document.getElementById('google_signout');
+        button.onclick = () => {
+            console.log(google.accounts.id)
+            google.accounts.id.disableAutoSelect()
+            google.accounts.id.revoke(localStorage.getItem('email'), done => {
+                localStorage.clear();
+                location.reload();
+            });
+
+            google.accounts.id.JSONre
+        }
+
+        
+
+
+
+        // decodeJwtResponse() is a custom function defined by you
+        // to decode the credential response.
+        //    const responsePayload = decodeJwtResponse(response.credential);    
+      
+        //    console.log("ID: " + responsePayload.sub);
+        //    console.log('Full Name: ' + responsePayload.name);
+        //    console.log('Given Name: ' + responsePayload.given_name);
+        //    console.log('Family Name: ' + responsePayload.family_name);
+        //    console.log("Image URL: " + responsePayload.picture);
+        //    console.log("Email: " + responsePayload.email);
+       
+      </script>
+</body>
+</html>
