@@ -53,16 +53,7 @@
                 localStorage.setItem('email', resp.usuario.correo);
             })
             .catch(console.warn);
-        // }catch {
-        //     fetch('https://bones.webmul.com/api/auth/google', {
-        //      method: 'POST', 
-        //      headers:{'Content-Type':'application/json'},
-        //      body: JSON.stringify(body)
-        //     })
-        //     .then(resp => resp.json())
-        //     .then(resp => {console.log(resp)})
-        //     .catch(console.warn);
-        // }
+
     }
         const button = document.getElementById('google_signout');
         button.onclick = () => {
@@ -76,20 +67,7 @@
             google.accounts.id.JSONre
         }
 
-        
 
-
-
-        // decodeJwtResponse() is a custom function defined by you
-        // to decode the credential response.
-        //    const responsePayload = decodeJwtResponse(response.credential);    
-      
-        //    console.log("ID: " + responsePayload.sub);
-        //    console.log('Full Name: ' + responsePayload.name);
-        //    console.log('Given Name: ' + responsePayload.given_name);
-        //    console.log('Family Name: ' + responsePayload.family_name);
-        //    console.log("Image URL: " + responsePayload.picture);
-        //    console.log("Email: " + responsePayload.email);
        
       </script>
 </body>
