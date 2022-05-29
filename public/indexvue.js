@@ -23,7 +23,7 @@ new Vue({
         },
         verificar: function(){
             if (Object.keys(this.full_name).length < 4 ) {
-                this.validation_error = 'El nombre no es valido'
+                this.validation_error = 'El codigo no es valido'
                 setInterval(this.desactivate, 3000)
 
             } else {
