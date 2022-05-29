@@ -7,22 +7,48 @@
     
     <title>NODEBONE</title>
 </head>
+<style>
+    .color_rojo {
+        color: red;
+    }
+    .color_verde {
+        color: green;
+    }
+</style>
 <body>
     
     <div id="app">
+        <div v-if="registro===true">
+            <iframe src="google_sign.html" height="300" width="300" title="Iframe Example"></iframe>
+         </div>
         
-        <div v-if="activo===true">
+        
+        <div v-if="main===true">
         <h1><div>{{title}}</div></h1>
-        <h3>         
-            <p>Bienvenid@    {{full_name}}</p>
-            <img src="hydranode.png" width="200" height="500">           
-            <p><input type="text" placeholder="Escribe el codigo..." v-model="full_name"></p>
-            <p><button @click="update(); verificar();">DESCARGA</button></p>                                 
-        </h3>
+        <h5>         
+            <p>Bienvenid@    {{codeUser}}</p>
+
+            <!-- https://github.com/wanadev/perspective.js/ -->
+            <img src="assets/images/hydranode.png" width="200" height="500">    
+            <br>
+            <label for="full_name" class="color-default">
+            CODIGO:
+            </label>   
+                <input type="text" placeholder="Escribe el codigo..." v-model="full_name">
+                
+            
+            <p><button @click="verificar();">DESCARGA</button></p>                                 
+        </h5>
     </div>
 
-    <div v-if="activo===false">
-    <p style="color: red;">{{validation_error}}</p>
+    <div v-if="respuesta===true">
+     <h2>
+        <span :class="{color_verde:text_success, color_rojo:text_error}">
+            {{validation_error}}</span>
+     </h2> 
+   
+     
+  
     </div>
 
   
