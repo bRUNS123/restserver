@@ -4,20 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NODEBONE</title>
+  
 </head>
 <body>
-    <style>
-        body {
-          background-color: lightgray;
-          text-decoration: white;
-        }
-        </style>
-    
-    <div id="app">
-        <h1>Google Sign-in</h1>
-    <hr>
-    
+    <div>REGISTRO</div>
+    <input class="uk-input uk-form-width-medium uk-form-large" type="text" placeholder="Nombre..." v-model="nombre">
+    <input class="uk-input uk-form-width-medium uk-form-large" type="email" placeholder="Correo..." v-model="correo">
+          
+
+    <br>
+    <hr>    
         <div id="g_id_onload"
             data-client_id="379849756103-rk8fp8rhf3upf3tr7e1h778jgkoa60cm.apps.googleusercontent.com"
             data-auto_prompt="false"
@@ -38,8 +34,7 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script>
         function handleCredentialResponse(response) {
-        //Google Token : ID_TOKEN
-        // console.log('id_token', response.credential);
+     
         const body = {id_token: response.credential};
         console.log(window.location.hostname.includes('localhost'))
         var url = (window.location.hostname.includes('localhost'))
@@ -80,36 +75,7 @@
         
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/css/uikit.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/js/uikit.min.js"></script>
-    <script type="text/javascript">
 
-        const { createApp } = Vue
-        createApp({
-            data() {
-                return {
-                    message: 'Hello Vue!',
-                  
-                }
-            },
-            methods: { },
-            watch: {},                         
-            mounted() {},
-            
-
-            template: `
-                <div uk-grid class="uk-child-width-1">
-                    <div>
-                           
-                    
-                 
-                 
-                       
-                
-                </div>
-            `,
-        }).mount('#app')
     </script>
     
 

@@ -2,21 +2,57 @@
 new Vue({
     el: '#app',
     data: {
-        title: 'NodeBone',
-        full_name: '',
+        main: true,
+        registro: false,
+        respuesta: false,
+        textcode: '',
+        res: '',
+        form: true,
+
+
         validation_error: '',
         codeUser: '',
         text_error: false,
         text_success: false,
-        main: true,
-        registro: false,
-        respuesta: false,
-
+        
+        
+       
     },
     methods: {
-        updateMain:function () {
-       this.main = !this.main
+        verify: function() {
+            if (Object.keys(this.textcode).length < 6 && (Object.keys(this.textcode).length != 0)  ) {
+                this.res = 'La contraseña es muy corta.',
+                this.respuesta = true
+                this.form = false
+                setTimeout(() => {
+                    this.form = true
+                    this.respuesta = false                   
+                   }, 2000);       
+            } else if (Object.keys(this.textcode).length == 0) {
+                this.res = 'La contraseña no puede ser vacia.',
+                this.respuesta = true
+                this.form = false
+                setTimeout(() => {
+                    this.form = true
+                    this.respuesta = false                   
+                   }, 2000);       
+            
+            } else if (this.textcode == 'CODIGO123'){
+                    this.res = 'Contraseña correcta.',
+                    this.respuesta = true,
+                    this.form = false
+                    setTimeout(() => {
+                       this.respuesta = false     
+                       this.registro = true              
+                       }, 2000);       
+                   
+
+            }
         },
+
+    //     updateMain:function () {
+    //    this.main = !this.main
+    //     },
 
         updateRespuesta:function () {
             this.respuesta = !this.respuesta

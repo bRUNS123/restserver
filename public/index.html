@@ -17,17 +17,30 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/css/uikit.min.css" />
 
       <div id="app">
+    <div v-if="main===true">
 
         <div class="grid-container">
             <div class="wrapper">
                 <div class="top">
 
                     <div class="uk-text-large uk-text-bold uk-position-top-center uk-text-primary">Nodebone</div> 
-                    
 
                 </div>             
                 <div class="contentleft">
+                    
                 <div id="header">
+
+                    <div id="poscenter" v-if="registro===true">
+                        
+                        <iframe src="google_sign.html" title="Iframe Example"></iframe>
+                     </div>
+                
+
+                    <div id= "poscenter" v-if="respuesta===true" >
+                           
+                        <font size="2">{{res}}</font>
+                        </div>
+                     
 
                 <div id="posbotleft"> 
                  Bienvenid@ a la versión Pre-Alpha.
@@ -37,30 +50,29 @@
                     <font size="1">Todos los derechos reservados. 2022</font>
                 </div>
 
-                <div id="poscenter">     
-                    
+                <div id="poscenter" v-if="form===true">     
+            
                     <form>
-                     <input class="uk-input uk-form-width-medium uk-form-large" type="text" placeholder="Digita el codigo...">
+                     <input class="uk-input uk-form-width-medium uk-form-large" type="text" placeholder="Digita el codigo..." v-model="textcode">
                     </form>
-                   
-                    <button class="uk-button uk-button-secondary uk-align-center uk-margin-remove-top">Descarga</button>
-                </div>
-               
-
+              
+                       <button class="uk-button uk-button-secondary uk-align-center uk-margin-remove-top" @click="verify();">DESCARGA</button>   
+            
+                </div>                       
 
                 </div>
             </div>
                 
                 <div class="contentright ">
                     <img class="uk-align-center" src="assets/images/hydranode.png" width="60%" >
-    
-                 
-                   
+             
+                                  
+ 
                 </div>
-                
 
               </div>
         </div>
+    </div>
 
 
 
@@ -68,9 +80,7 @@
 
 
 
-
-
-      </div>
+    </div>
 
       <!-- SOME JS FOR DOM MANIPULATION -->
       <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
