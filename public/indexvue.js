@@ -1,10 +1,3 @@
-// Vue.component('index', {
-//     template: `
-//     <div>
-//     <h2>{{title}}</h2>
-//     </div>
-//     `
-// })
 
 new Vue({
     el: '#app',

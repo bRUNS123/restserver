@@ -4,65 +4,76 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>NODEBONE</title>
+    <title>Nodebone v0.3</title>
 </head>
-<style>
-    .color_rojo {
-        color: red;
-    }
-    .color_verde {
-        color: green;
-    }
-</style>
+
+
 <body>
-    
-    <div id="app">
-        <div v-if="registro===true">
-            <iframe src="google_sign.html" height="300" width="300" title="Iframe Example"></iframe>
-         </div>
-        
-        
-        <div v-if="main===true">
-        <h1><div>{{title}}</div></h1>
-        <h5>         
-            <p>Bienvenid@    {{codeUser}}</p>
+      <!-- IMPORTAR EXTERNAL LIBS JS -->
+      <script src="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/js/uikit.min.js"></script>
 
-            <!-- https://github.com/wanadev/perspective.js/ -->
-            <img src="assets/images/hydranode.png" width="200" height="500">    
-            <br>
-            <label for="full_name" class="color-default">
-            CODIGO:
-            </label>   
-                <input type="text" placeholder="Escribe el codigo..." v-model="full_name">
+      <!-- IMPORT CSS-->
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/css/uikit.min.css" />
+
+      <div id="app">
+
+        <div class="grid-container">
+            <div class="wrapper">
+                <div class="top">
+
+                    <div class="uk-text-large uk-text-bold uk-position-top-center uk-text-primary">Nodebone</div> 
+                    
+
+                </div>             
+                <div class="contentleft">
+                <div id="header">
+
+                <div id="posbotleft"> 
+                 Bienvenid@ a la versión Pre-Alpha.
+                </div>
+
+                <div id="posbotright">                               
+                    <font size="1">Todos los derechos reservados. 2022</font>
+                </div>
+
+                <div id="poscenter">     
+                    
+                    <form>
+                     <input class="uk-input uk-form-width-medium uk-form-large" type="text" placeholder="Digita el codigo...">
+                    </form>
+                   
+                    <button class="uk-button uk-button-secondary uk-align-center uk-margin-remove-top">Descarga</button>
+                </div>
+               
+
+
+                </div>
+            </div>
                 
-            
-            <p><button @click="verificar();">DESCARGA</button></p>                                 
-        </h5>
-    </div>
-
-    <div v-if="respuesta===true">
-     <h2>
-        <span :class="{color_verde:text_success, color_rojo:text_error}">
-            {{validation_error}}</span>
-     </h2> 
-   
-     
-  
-    </div>
-
-  
+                <div class="contentright ">
+                    <img class="uk-align-center" src="assets/images/hydranode.png" width="60%" >
     
+                 
+                   
+                </div>
+                
 
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/css/uikit.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/js/uikit.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-    <script type="text/javascript" src="indexvue.js"></script>
+              </div>
+        </div>
 
 
+
+
+
+
+
+
+
+      </div>
+
+      <!-- SOME JS FOR DOM MANIPULATION -->
+      <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+      <script type="text/javascript" src="indexvue.js"></script>
 </body>
 </html>
-
-   <!-- <p v-show="activo">bienvenid@</p> -->
-            <!-- <p v-html="variable String html"></p> -->
