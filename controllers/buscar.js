@@ -122,7 +122,7 @@ const buscarProductosPorCategoria = async (termino = '', res = response) => {
       ],
       $and: [{ estado: true }],
     })
-      .select('nombre precio descripcion disponible')
+      .select('nombre precio descripcion disponible img')
       .populate('categoria', 'nombre');
 
     res.json({ results: productos });
