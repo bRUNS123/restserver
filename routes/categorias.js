@@ -60,7 +60,7 @@ router.put(
     check('nombre', 'El nombre es oblitagorio').not().isEmpty(),
     check('id').custom(existeCategoriaPorId),
     check('nombre', 'id').custom(categoriaExisteActualizar),
-    check('categoria', 'No es un id de DB').isMongoId(),
+    
     validarCampos,
   ],
   actualizarCategoria
