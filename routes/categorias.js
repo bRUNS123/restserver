@@ -71,7 +71,7 @@ router.delete(
   '/:id',
   [
     validarJWT,
-    //Solo puede ser Admin role.
+    //Solo puede ser Admin role...
     // esAdminRole,
     tieneRole('ADMIN_ROLE', 'SUPER_ROLE'),
     check('id', 'No es un ID válido').isMongoId(),
