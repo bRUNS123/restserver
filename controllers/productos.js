@@ -59,6 +59,7 @@ const crearProducto = async (req, res = response) => {
 
 const actualizarProducto = async (req, res = response) => {
   const { id } = req.params;
+  console.log(req.body);
   const { estado, usuario, ...data } = req.body;
 
   if (data.nombre) {
@@ -69,6 +70,7 @@ const actualizarProducto = async (req, res = response) => {
 
   const producto = await Producto.findByIdAndUpdate(id, data, { new: true });
 
+  
   res.json(producto);
 };
 
