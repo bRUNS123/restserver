@@ -30,9 +30,10 @@ const obtenerProducto = async (req, res = response) => {
 };
 
 const crearProducto = async (req, res = response) => {
-  const { estado, usuario, ...body } = req.body;
+  const { estado, usuario, categoria, ...body } = req.body;
 
   const nombre = body.nombre.toUpperCase();
+  const {id} = categoria;
 
   const productoDB = await Producto.findOne({ nombre });
 
@@ -47,6 +48,7 @@ const crearProducto = async (req, res = response) => {
     ...body,
     nombre: body.nombre.toUpperCase(),
     usuario: req.usuario._id,
+    categoria: id,
   };
 
   const producto = new Producto(data);
