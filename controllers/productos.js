@@ -65,7 +65,7 @@ const categoriaBD = await Categoria.findById(_id)
     ...body,
     nombre: body.nombre.toUpperCase(),
     usuario: req.usuario._id,
-    categoria: id,
+    categoria: _id,
   };
 
   const producto = new Producto(data);
