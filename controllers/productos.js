@@ -35,7 +35,7 @@ const crearProducto = async (req, res = response) => {
 
   console.log(categoria);
   const nombre = body.nombre.toUpperCase();
-  const {id} = categoria;
+  const {_id} = categoria;
 
   const productoDB = await Producto.findOne({ nombre });
   
@@ -47,16 +47,16 @@ const crearProducto = async (req, res = response) => {
     });
   }
 
-  if(!isValidObjectId(id)){ 
+  if(!isValidObjectId(_id)){ 
     return res.status(400).json({  
         msg: "El id de la categoria es invalido ",  
       });  
 }
 
-const categoriaBD = await Categoria.findById(id)
+const categoriaBD = await Categoria.findById(_id)
     if (!categoriaBD) { 
         return res.status(400).json({ 
-          msg: `no existe categoria por este ID ${id}`, 
+          msg: `no existe categoria por este ID ${_id}`, 
         }); 
       }
 
