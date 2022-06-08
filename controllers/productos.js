@@ -33,6 +33,7 @@ const obtenerProducto = async (req, res = response) => {
 const crearProducto = async (req, res = response) => {
   const { estado, usuario, categoria, ...body } = req.body;
 
+  console.log(categoria);
   const nombre = body.nombre.toUpperCase();
   const {id} = categoria;
 
