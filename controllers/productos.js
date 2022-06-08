@@ -1,5 +1,6 @@
 const { response } = require('express');
-const { Producto } = require('../models');
+const { Producto, Categoria } = require('../models');
+const { isValidObjectId } = require('mongoose');
 
 const obtenerProductos = async (req, res = response) => {
   const { limite = 5, desde = 0 } = req.query;
@@ -36,12 +37,27 @@ const crearProducto = async (req, res = response) => {
   const {id} = categoria;
 
   const productoDB = await Producto.findOne({ nombre });
+  
+ 
 
   if (productoDB) {
     return res.status(400).json({
       msg: `El producto ${productoDB.nombre}, ya existe`,
     });
   }
+
+  if(!isValidObjectId(id)){ 
+    return res.status(400).json({  
+        msg: "El id de la categoria es invalido ",  
+      });  
+}
+
+const categoriaBD = await Categoria.findById(id)
+    if (!categoriaBD) { 
+        return res.status(400).json({ 
+          msg: `no existe categoria por este ID ${id}`, 
+        }); 
+      }
 
   // Generar la data a guardar
   const data = {
