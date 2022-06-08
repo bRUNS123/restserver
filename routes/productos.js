@@ -48,8 +48,8 @@ router.post(
   [
     validarJWT,
     check('nombre', 'El nombre es oblitagorio').not().isEmpty(),
-    check('categoria', 'No es un id de DB').isMongoId(),
-    check('categoria').custom(existeCategoriaPorId),
+    check('categoria', 'La categoria es obligatoria').not().isEmpty(),
+    // check('categoria').custom(existeCategoriaPorId),
     validarCampos,
   ],
   crearProducto
