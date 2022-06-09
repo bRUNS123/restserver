@@ -67,14 +67,19 @@ const categoriaBD = await Categoria.findById(_id)
     usuario: req.usuario._id,
     categoria: _id,
   };
+  const producto = new Producto(data); 
+ 
+  // Guardar DB 
+  const newProduct= await producto.save(); 
 
-  const producto = new Producto(data);
+  const data2 = {...newProduct, categoría: categoriaDB};
+  console.log(data2);
 
-  // Guardar DB
-  await producto.save();
-
-  res.status(201).json(producto);
+ 
+  res.status(201).json({producto:data2}); 
 };
+
+
 
 const actualizarProducto = async (req, res = response) => {
   const { id } = req.params;
