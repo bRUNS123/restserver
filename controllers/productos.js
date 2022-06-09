@@ -69,14 +69,15 @@ const categoriaBD = await Categoria.findById(_id)
   };
   const producto = new Producto(data); 
  
-  // Guardar DB 
-  const newProduct= await producto.save(); 
+// Guardar DB
+let newProdu = await producto.save({new: true});
 
-  const data2 = {...newProduct, categoría: categoriaDB};
-  console.log(data2);
+newProdu.categoria =  categoriaBD
 
- 
-  res.status(201).json({producto:data2}); 
+
+console.log(newProdu)
+
+res.status(201).json(newProdu);
 };
 
 
