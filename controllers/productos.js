@@ -31,7 +31,7 @@ const obtenerProducto = async (req, res = response) => {
 };
 
 const crearProducto = async (req, res = response) => {
-  const { estado, usuario, categoria, ...body } = req.body;
+  const { estado, usuario, categoria,  ...body } = req.body;
 
   console.log(categoria);
   const nombre = body.nombre.toUpperCase();
@@ -66,6 +66,7 @@ const categoriaBD = await Categoria.findById(_id)
     nombre: body.nombre.toUpperCase(),
     usuario: req.usuario._id,
     categoria: _id,
+   
   };
   const producto = new Producto(data); 
  
