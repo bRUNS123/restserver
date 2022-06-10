@@ -33,6 +33,8 @@ const obtenerProducto = async (req, res = response) => {
 const crearProducto = async (req, res = response) => {
   const { estado, usuario, categoria,  ...body } = req.body;
 
+
+  console.log(req.body);
   console.log(categoria);
   const nombre = body.nombre.toUpperCase();
   const {_id} = categoria;
@@ -69,16 +71,18 @@ const categoriaBD = await Categoria.findById(_id)
    
   };
   const producto = new Producto(data); 
+
+
  
 // Guardar DB
-let newProdu = await producto.save({new: true});
+const newProdu = await producto.save({new: true});
+console.log(producto._id);
+// newProdu.categoria =  categoriaBD
 
-newProdu.categoria =  categoriaBD
 
+// console.log(newProdu)
 
-console.log(newProdu)
-
-res.status(201).json(newProdu);
+res.status(201).json({id: newProdu._id});
 };
 
 
