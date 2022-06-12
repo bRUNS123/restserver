@@ -5,6 +5,7 @@ const {
   cargarArchivo,
   actualizarImagen,
   mostrarImagen,
+  retornaImagen,
 } = require('../controllers/uploads');
 //actualizarImagenCDN
 const { coleccionesPermitidas } = require('../helpers');
@@ -43,5 +44,8 @@ router.get(
   ],
   mostrarImagen
 );
+
+router.get('/img/:coleccion/:img', retornaImagen);
+
 
 module.exports = router;

@@ -13,7 +13,7 @@ const fs = require('fs');
 const cargarArchivo = async (req, res = response) => {
   try {
     //const nombre = await subirArchivo(req.files, ['txt', 'md'], 'textos');
-    const nombre = await subirArchivo(req.files, imagenesPermitidas, 'imgs');
+    const nombre = await subirArchivo(req.files, imagenesPermitidas, 'productos');
     res.json({ nombre });
   } catch (msg) {
     res.status(400).json({ msg });
@@ -161,11 +161,27 @@ const mostrarImagen = async (req, res = response) => {
 };
 
 
+const retornaImagen = (req, res = response) => {
 
+  const coleccion = req.params.coleccion;
+  const img = req.params.img;
+
+  const pathImg = path.join(__dirname, `../uploads/${ coleccion }/${ img }`);
+
+  // imagen por defecto
+  if (fs.existsSync(pathImg)) {
+      res.sendFile(pathImg);
+  } else {
+      const pathImg = path.join(__dirname, '../assets/no-image.jpg');
+      res.sendFile(pathImg);
+  }
+
+}
 
 module.exports = {
   cargarArchivo,
   actualizarImagen,
   mostrarImagen,
+  retornaImagen
   //actualizarImagenCloudinary
 };

@@ -49,6 +49,13 @@ class Server {
     //Directorio Publico
     this.app.use(express.static('public'));
 
+    // //Directorio Uploads
+    // this.app.use(express.static('uploads'));
+    
+    // //Metodo Imagen Publica
+    // this.imagenPublica();
+    
+
     //Carga de Archivos (Use temp files instead of memory for managing the upload process).
     this.app.use(
       fileUpload({
@@ -67,6 +74,12 @@ class Server {
     this.app.use(this.paths.productos, require('../routes/productos'));
     this.app.use(this.paths.uploads, require('../routes/uploads'));
   }
+  // imagenPublica() {
+  //   this.app.get('*', (req, res) => {
+  //     res.sendFile(path.resolve('../public/index.html'));
+  // });
+  // }
+
 
   listen() {
     this.app.listen(this.port, () => {
