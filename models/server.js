@@ -4,11 +4,14 @@ const { dbConnection } = require('../database/config');
 const morgan = require('morgan');
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
+const { socketController } = require('../sockets/controller');
 
 class Server {
   constructor() {
     this.app = express();
     this.port = process.env.PORT;
+    this.server = require('http').createServer(this.app);
+    this.io = require('socket.io')(this.server);
 
     this.paths = {
       auth: '/api/auth',
@@ -27,6 +30,9 @@ class Server {
 
     //Rutas de mi aplicación.
     this.routes();
+
+    //Configuraciòn de Scokets
+    this.sockets();
   }
 
   async conectarDB() {
@@ -74,6 +80,9 @@ class Server {
     this.app.use(this.paths.productos, require('../routes/productos'));
     this.app.use(this.paths.uploads, require('../routes/uploads'));
   }
+  sockets(){
+    this.io.on('connection', socketController);
+  }
   // imagenPublica() {
   //   this.app.get('*', (req, res) => {
   //     res.sendFile(path.resolve('../public/index.html'));
@@ -82,7 +91,7 @@ class Server {
 
 
   listen() {
-    this.app.listen(this.port, () => {
+    this.server.listen(this.port, () => {
       console.log('Servidor corriendo en puerto', this.port);
     });
   }

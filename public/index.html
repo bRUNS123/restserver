@@ -4,86 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nodebone v0.3</title>
+    <title>Socket Client</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
+<body class="container">
+    <h1 class="mt-2">Socket Client</h1>
+    <hr>
 
+    <p>
+        Server Status: 
+        <span id="lblOnline" class="text-success">Online</span>
+        <span id="lblOffline" class="text-danger">Offline</span>
+    </p>
 
-<body>
-      <!-- IMPORTAR EXTERNAL LIBS JS -->
-      <script src="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/js/uikit.min.js"></script>
+    <div class="row">
+        <div class="col">
+            <input type="text" id="txtMensaje" class="form-cont">
+        </div>
+        <div class="col">
+            <button id="btnEnviar" class="btn btn-primary">
+                Enviar
+            </button>
 
-      <!-- IMPORT CSS-->
-      <link rel="stylesheet" href="style.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/css/uikit.min.css" />
-
-      <div id="app">
-    <div v-if="main===true">
-
-        <div class="grid-container">
-            <div class="wrapper">
-                <div class="top">
-
-                    <div class="uk-text-large uk-text-bold uk-position-top-center uk-text-primary">Nodebone</div> 
-
-                </div>             
-                <div class="contentleft">
-                    
-                <div id="header">
-
-                    <div id="poscenter" v-if="registro===true">
-                        
-                        <iframe src="google_sign.html" title="Iframe Example"></iframe>
-                     </div>
-                
-
-                    <div id= "poscenter" v-if="respuesta===true" >
-                           
-                        <font size="2">{{res}}</font>
-                        </div>
-                     
-
-                <div id="posbotleft"> 
-                 Bienvenid@ a la versión Pre-Alpha.
-                </div>
-
-                <div id="posbotright">                               
-                    <font size="1">Todos los derechos reservados. 2022</font>
-                </div>
-
-                <div id="poscenter" v-if="form===true">     
-            
-                    <form>
-                     <input class="uk-input uk-form-width-medium uk-form-large" type="text" placeholder="Digita el codigo..." v-model="textcode">
-                    </form>
-              
-                       <button class="uk-button uk-button-secondary uk-align-center uk-margin-remove-top" @click="verify();">DESCARGA</button>   
-            
-                </div>                       
-
-                </div>
-            </div>
-                
-                <div class="contentright ">
-                    <img class="uk-align-center" src="assets/images/hydranode.png" width="60%" >
-             
-                                  
- 
-                </div>
-
-              </div>
         </div>
     </div>
 
 
-
-
-
-
-
-    </div>
-
-      <!-- SOME JS FOR DOM MANIPULATION -->
-      <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-      <script type="text/javascript" src="indexvue.js"></script>
+     <script src="./socket.io/socket.io.js"></script>   
+    <script src="./js/socket-client.js"></script>
+    
 </body>
 </html>
